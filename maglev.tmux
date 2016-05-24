@@ -78,8 +78,8 @@ apply_theme() {
     tmux set -g message-command-style fg=$message_command_fg,bg=$message_command_bg,$message_attr
 
     # windows mode
-    mode_fg="#5a5475"     # bg purple
-    mode_bg="#fffea0"     # goldenrod
+    mode_fg="#5a5475"  # bg purple
+    mode_bg="#fffea0"  # goldenrod
     mode_attr=bold
     tmux setw -g mode-style fg=$mode_fg,bg=$mode_bg,$mode_attr
 
@@ -128,9 +128,9 @@ apply_theme() {
     time_date_bg="#5a5475"      # bg purple
     whoami_fg="#f8f8f0"         # silver
     whoami_bg="#ff857f"         # peach
-    host_fg="#ffb8d1"           # pink
+    host_fg="#ff857f"           # peach
     host_bg="#f8f8f0"           # silver
-    status_right="︎#[fg=$time_date_fg,nobold]$right_separator %R $right_separator %a %d %b #[fg=$host_bg]$right_separator_black#[fg=$host_fg,bg=$host_bg,bold] #{battery_icon} #{battery_percentage} $right_separator CPU #{cpu_percentage} "
+    status_right="︎#[fg=$time_date_fg,nobold]$right_separator %R $right_separator %a %b %d #[fg=$host_bg]$right_separator_black#[fg=$host_fg,bg=$host_bg,bold] #{battery_icon} #{battery_percentage} $right_separator CPU #{cpu_percentage} "
     tmux set -g status-right-length 64 \; set -g status-right "$status_right"
 
     # clock
