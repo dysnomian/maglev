@@ -56,15 +56,15 @@ apply_theme() {
     session_symbol=''
 
     # panes
-    pane_border_fg=colour8 # gray
-    pane_active_border_fg=colour4 # blue
+    pane_border_fg="#c5a3ff"        # lilac
+    pane_active_border_fg="#c2ffdf" # seafoam
 
     tmux set -g pane-border-style fg=$pane_border_fg \; set -g pane-active-border-style fg=$pane_active_border_fg
     #uncomment for fat borders
     #tmux set -ga pane-border-style bg=$pane_border_fg \; set -ga pane-active-border-style bg=$pane_active_border_fg
 
-    display_panes_active_colour=colour4 # blue
-    display_panes_colour=colour4 # blue
+    display_panes_active_colour="#c2ffdf" # seafoam
+    display_panes_colour="#c2ffdf"        # seafoam
     tmux set -g display-panes-active-colour $display_panes_active_colour \; set -g display-panes-colour $display_panes_colour
 
     # messages
@@ -96,13 +96,13 @@ apply_theme() {
     fi
     tmux set -g status-left-length 32 \; set -g status-left "$status_left"
 
-    window_status_fg=colour8 # gray
-    window_status_bg=colour0 # dark gray
+    window_status_fg="#f8f8f0" # silver
+    window_status_bg="#5a5475" # peach
     window_status_format="#I #W"
     tmux setw -g window-status-style fg=$window_status_fg,bg=$window_status_bg \; setw -g window-status-format "$window_status_format"
 
-    window_status_current_fg=colour16 # black
-    window_status_current_bg=colour4 # blue
+    window_status_current_fg="#f8f8f0" # silver
+    window_status_current_bg="#ff857f" # peach
     window_status_current_format="#[fg=$window_status_bg,bg=$window_status_current_bg]$left_separator_black#[fg=$window_status_current_fg,bg=$window_status_current_bg,bold] #I $left_separator #W #[fg=$window_status_current_bg,bg=$status_bg,nobold]$left_separator_black"
     tmux setw -g window-status-current-format "$window_status_current_format"
     tmux set -g status-justify left
