@@ -68,24 +68,24 @@ apply_theme() {
     tmux set -g display-panes-active-colour $display_panes_active_colour \; set -g display-panes-colour $display_panes_colour
 
     # messages
-    message_fg=colour16           # black
-    message_bg=colour11 # yellow
+    message_fg="#5a5475"     # bg purple
+    message_bg="#fffea0"     # goldenrod
     message_attr=bold
     tmux set -g message-style fg=$message_fg,bg=$message_bg,$message_attr
 
-    message_command_fg=colour16   # black
-    message_command_bg=colour160  # light yellow
+    message_command_fg="#5a5475"     # bg purple
+    message_command_bg="#fffea0"     # goldenrod
     tmux set -g message-command-style fg=$message_command_fg,bg=$message_command_bg,$message_attr
 
     # windows mode
-    mode_fg=colour16   # black
-    mode_bg=colour11 # yellow
+    mode_fg="#5a5475"     # bg purple
+    mode_bg="#fffea0"     # goldenrod
     mode_attr=bold
     tmux setw -g mode-style fg=$mode_fg,bg=$mode_bg,$mode_attr
 
     # status line
-    status_fg=colour253 # white
-    status_bg=colour0 # dark gray
+    status_fg="#c5a3ff" # lilac
+    status_bg="#5a5475" # bg purple
     tmux set -g status-style fg=$status_fg,bg=$status_bg
 
     session_fg=colour16  # black
@@ -121,13 +121,13 @@ apply_theme() {
     window_status_last_attr=default
     tmux setw -g window-status-last-style $window_status_last_attr,fg=$window_status_last_fg
 
-    battery_full_fg=colour160   # red
-    battery_empty_fg=colour254  # white
-    battery_bg=colour160        # black
-    time_date_fg=colour8      # gray
-    time_date_bg=colour0 # dark gray
-    whoami_fg=colour254         # white
-    whoami_bg=colour160         # red
+    battery_full_fg="#f92672"   # magenta
+    battery_empty_fg="#f8f8f0"  # silver
+    battery_bg="#5a5475"        # bg purple
+    time_date_fg="#f8f8f0"      # silver
+    time_date_bg="#5a5475"      # bg purple
+    whoami_fg="#f8f8f0"         # silver
+    whoami_bg="#ff857f"         # peach
     host_fg=colour16            # black
     host_bg=colour254           # white
     status_right="︎#[fg=$time_date_fg,nobold]$right_separator %R $right_separator %a %d %b #[fg=$host_bg]$right_separator_black#[fg=$host_fg,bg=$host_bg,bold] #{battery_icon} #{battery_percentage} $right_separator CPU #{cpu_percentage} "
