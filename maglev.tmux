@@ -88,8 +88,8 @@ apply_theme() {
     status_bg="#5a5475" # bg purple
     tmux set -g status-style fg=$status_fg,bg=$status_bg
 
-    session_fg=colour16  # black
-    session_bg=colour11 # yellow
+    session_fg="#5a5475" # bg purple
+    session_bg="#c2ffdf" # seafoam
     status_left="#[fg=$session_fg,bg=$session_bg,bold] ❐ #S #[fg=$session_bg,bg=$status_bg,nobold]$left_separator_black"
     if [ x"`tmux -q -L tmux_theme_status_left_test -f /dev/null new-session -d \; show -g -v status-left \; kill-session`" = x"[#S] " ] ; then
         status_left="$status_left "
@@ -112,12 +112,12 @@ apply_theme() {
     window_status_activity_attr=underscore
     tmux setw -g window-status-activity-style fg=$window_status_activity_fg,bg=$window_status_activity_bg,$window_status_activity_attr
 
-    window_status_bell_fg=colour11 # yellow
+    window_status_bell_fg="#fffea0" # goldenrod
     window_status_bell_bg=default
     window_status_bell_attr=blink,bold
     tmux setw -g window-status-bell-style fg=$window_status_bell_fg,bg=$window_status_bell_bg,$window_status_bell_attr
 
-    window_status_last_fg=colour4 # blue
+    window_status_last_fg="#8076aa" # lavender
     window_status_last_attr=default
     tmux setw -g window-status-last-style $window_status_last_attr,fg=$window_status_last_fg
 
@@ -128,13 +128,13 @@ apply_theme() {
     time_date_bg="#5a5475"      # bg purple
     whoami_fg="#f8f8f0"         # silver
     whoami_bg="#ff857f"         # peach
-    host_fg=colour16            # black
-    host_bg=colour254           # white
+    host_fg="#ffb8d1"           # pink
+    host_bg="#f8f8f0"           # silver
     status_right="︎#[fg=$time_date_fg,nobold]$right_separator %R $right_separator %a %d %b #[fg=$host_bg]$right_separator_black#[fg=$host_fg,bg=$host_bg,bold] #{battery_icon} #{battery_percentage} $right_separator CPU #{cpu_percentage} "
     tmux set -g status-right-length 64 \; set -g status-right "$status_right"
 
     # clock
-    clock_mode_colour=colour4 # blue
+    clock_mode_colour="#c5a3ff" # lilac
     tmux setw -g clock-mode-colour $clock_mode_colour
 }
 
