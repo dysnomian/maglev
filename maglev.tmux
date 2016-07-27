@@ -2,8 +2,8 @@
 set -e
 
 # Battery icons
-tmux set -g @batt_charged_icon "︎♡"
-tmux set -g @batt_charging_icon "︎♡"
+tmux set -g @batt_charged_icon ""
+tmux set -g @batt_charging_icon "︎"
 tmux set -g @batt_discharging_icon "︎♡"
 tmux set -g @batt_attached_icon "︎♡"
 
