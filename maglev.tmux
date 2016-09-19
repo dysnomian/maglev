@@ -25,7 +25,7 @@ ff_right_separator_black=''
 ff_session_symbol=''
 
 clock() {
-    tmux setw -g clock-mode-colour $ff_lilac
+    tmux setw -g clock-mode-colour $ff_goldenrod
 }
 
 apply_theme() {
@@ -114,9 +114,7 @@ apply_theme() {
     status_right="︎#[fg=$time_date_fg,nobold]$right_separator %R $right_separator %a %b %d #[fg=$host_bg]$right_separator_black#[fg=$host_fg,bg=$host_bg,bold] #{battery_icon} #{battery_percentage} $right_separator #{cpu_percentage} "
     tmux set -g status-right-length 64 \; set -g status-right "$status_right"
 
-    # clock
-    clock_mode_colour="#c5a3ff" # lilac
-    tmux setw -g clock-mode-colour $clock_mode_colour
+    clock
 }
 
 apply_theme
