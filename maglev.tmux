@@ -7,6 +7,26 @@ tmux set -g @batt_charging_icon "︎"
 tmux set -g @batt_discharging_icon "︎♡"
 tmux set -g @batt_attached_icon "︎♡"
 
+# Colors
+ff_lilac="#c5a3ff"
+ff_seafoam="#c2ffdf"
+ff_bg_purple="#5a5475"
+ff_goldenrod="#fffea0"
+ff_lavender="#8076aa"
+ff_magenta="#f92672"
+ff_silver="#f8f8f0"
+ff_peach="#ff857f"
+
+# Glyphs
+ff_left_separator=''
+ff_left_separator_black=''
+ff_right_separator=''
+ff_right_separator_black=''
+ff_session_symbol=''
+
+clock() {
+    tmux setw -g clock-mode-colour $ff_lilac
+}
 
 apply_theme() {
     left_separator=''
