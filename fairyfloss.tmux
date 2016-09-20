@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 set -e
 
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+slack_status="#($CURRENT_DIR/scripts/slack_status.sh)"
+vpn_status="#($CURRENT_DIR/scripts/vpn_status.sh)"
+
 # Battery icons
-# tmux set -g @batt_charged_icon ""
-# tmux set -g @batt_charging_icon "︎"     # nerdfonts f1e6
-# tmux set -g @batt_discharging_icon "︎♡"
-# tmux set -g @batt_attached_icon "︎♡"
+tmux set -g @batt_charged_icon ""
+tmux set -g @batt_charging_icon "︎"     # nerdfonts f1e6
+tmux set -g @batt_discharging_icon "︎♡"
 
 # Colors
 ff_lilac="#c5a3ff"
@@ -17,6 +21,9 @@ ff_magenta="#f92672"
 ff_silver="#f8f8f0"
 ff_peach="#ff857f"
 
+ff_slack_bg="$ff_magenta"
+ff_slack_fg="$ff_silver"
+
 # Glyphs
 ff_left_separator=''
 ff_left_separator_black=''
@@ -24,12 +31,62 @@ ff_right_separator=''
 ff_right_separator_black=''
 ff_session_symbol='❐'
 ff_slack_symbol=''           # nerdfonts f198
-ff_vpn_symbol=''             # nerdfonts f074
+ff_vpn_symbol=''             # nerdfonts f0ec
 ff_calendar_symbol=''        # nerdfonts f133
+ff_cpu_symbol=""             # nerdfonts f0ae
+
+current_bg=""
+current_fg=""
 
 
-clock() {
+# new_segment() {
+#     content="$1"
+#     old_bg=$current_bg
+#     old_fg=$current_fg
+#     $current_bg="$2"
+#     $current_fg="$3"
+#
+#     # If it's the same color scheme, do a same color separator
+#     if [ "$current_bg" = $bg ]; then
+#          return "$ff_right_separator$content "
+#     # If it's the first segment, do a none to color scheme separator
+#     elif [ -z "$current_bg" ]; then
+#         return "#[fg=$current_bg]$right_separator_black#[fg=$current_fg,bg=$current_bg,bold]$content "
+#     #If it's a different color scheme to a different color scheme, switch
+#     else
+#         return "#[fg=$current_bg]$right_separator_black#[fg=$current_fg,bg=$current_bg,bold]$content"
+#     fi
+#
+# }
+#
+# status_module_clock(){
+#     time_date_fg="#f8f8f0"      # silver
+#     time_date_bg="#5a5475"      # bg purple
+#
+#     return new_segment $time_date_bg $time_date_bg " %R %a %b %d "
+# }
+#
+# status_module_slack=$(new_segment $slack_status $ff_slack_bg $ff_slack_fg)
+#
+# status_module_vpn(){
+#     return new_segment $vpn_status $ff_bg_purple $ff_silver
+# }
+#
+configure_clock_mode() {
     tmux setw -g clock-mode-colour $ff_goldenrod
+}
+
+vpn() {
+    if [ "$vpn_status" = "CONNECTED"]; then
+        return "$right_separator$ff_vpn_symbol"
+    fi
+}
+
+
+slack() {
+    if [ "$slack_status" = "MENTION"]; then
+        return "$right_separator$ff_vpn_symbol"
+    fi
 }
 
 apply_theme() {
@@ -42,6 +99,8 @@ apply_theme() {
     # left_separator_black=''
     # right_separator=''
     # right_separator_black=''
+
+    configure_clock_mode
 
     # panes
     pane_border_fg="#c5a3ff"        # lilac
@@ -109,24 +168,25 @@ apply_theme() {
     window_status_last_attr=default
     tmux setw -g window-status-last-style $window_status_last_attr,fg=$window_status_last_fg
 
+    time_date_fg="#f8f8f0"      # silver
+    time_date_bg="#5a5475"      # bg purple
     battery_full_fg="#f92672"   # magenta
     battery_empty_fg="#f8f8f0"  # silver
     battery_bg="#5a5475"        # bg purple
-    time_date_fg="#f8f8f0"      # silver
-    time_date_bg="#5a5475"      # bg purple
     whoami_fg="#f8f8f0"         # silver
     whoami_bg="#ff857f"         # peach
     host_fg="#ff857f"           # peach
     host_bg="#f8f8f0"           # silver
 
-    status_clock="#[fg=$time_date_fg,nobold]$right_separator %R"
-    status_slack="#[fg=$time_date_fg,nobold]$right_separator $ff_slack_symbol"
-    status_vpn="#[fg=$time_date_fg,nobold]$right_separator $ff_vpn_symbol"
+    segment_color_dark="#[fg=$time_date_bg]$right_separator_black#[fg=$time_date_fg,bg=$time_date_bg,bold]"
+    status_clock="$right_separator %R %a %b %d "
+    segment_color_light="#[fg=$host_bg]$right_separator_black#[fg=$host_fg,bg=$host_bg,bold]"
+    status_battery="#{battery_icon} #{battery_percentage}"
 
-    status_right="︎$status_slack $status_vpn $status_clock $right_separator %a %b %d #[fg=$host_bg]$right_separator_black#[fg=$host_fg,bg=$host_bg,bold] #{battery_icon} #{battery_percentage} $right_separator #{cpu_percentage} "
+    status_right="︎$segment_color_dark$status_clock$segment_color_light$status_battery$right_separator$ff_cpu_symbol#{cpu_percentage}"
+
     tmux set -g status-right-length 64 \; set -g status-right "$status_right"
 
-    clock
 }
 
 apply_theme
