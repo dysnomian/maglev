@@ -24,6 +24,8 @@ ff_right_separator=''
 ff_right_separator_black=''
 ff_session_symbol='❐'
 ff_slack_symbol=''           # nerdfonts f198
+ff_vpn_symbol=''             # nerdfonts f074
+ff_calendar_symbol=''        # nerdfonts f133
 
 
 clock() {
@@ -117,7 +119,9 @@ apply_theme() {
     host_fg="#ff857f"           # peach
     host_bg="#f8f8f0"           # silver
 
-    status_right="︎#[fg=$time_date_fg,nobold]$right_separator %R $right_separator %a %b %d #[fg=$host_bg]$right_separator_black#[fg=$host_fg,bg=$host_bg,bold] #{battery_icon} #{battery_percentage} $right_separator #{cpu_percentage} "
+    status_clock="#[fg=$time_date_fg,nobold]$right_separator %R"
+
+    status_right="︎$status_clock $right_separator %a %b %d #[fg=$host_bg]$right_separator_black#[fg=$host_fg,bg=$host_bg,bold] #{battery_icon} #{battery_percentage} $right_separator #{cpu_percentage} "
     tmux set -g status-right-length 64 \; set -g status-right "$status_right"
 
     clock
