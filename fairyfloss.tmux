@@ -124,9 +124,17 @@ apply_theme() {
     status_vpn="$right_separator $ff_vpn_symbol"
     status_clock="$right_separator %R %a %b %d"
     segment_color_light="#[fg=$host_bg]$right_separator_black#[fg=$host_fg,bg=$host_bg,bold]"
-    status_battery="#{battery_icon} #{battery_percentage} "
+    status_battery="#{battery_icon} #{battery_percentage}"
+    status_cpu="#{cpu_percentage}"
 
-    status_right="︎$segment_color_dark $status_slack $status_vpn $status_clock $segment_color_light $status_battery $right_separator #{cpu_percentage} "
+
+    status_right="︎$segment_color_dark " + \
+        "$status_slack $status_vpn " + \
+        "$status_clock " + \
+        "$segment_color_light " + \
+        "$status_battery " + \
+        "$right_separator " + \
+        "$status_cpu"
 
     tmux set -g status-right-length 64 \; set -g status-right "$status_right"
 
