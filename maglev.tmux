@@ -18,10 +18,16 @@ ff_silver="#f8f8f0"
 ff_peach="#ff857f"
 
 # Glyphs
-ff_left_separator=''
-ff_left_separator_black=''
-ff_right_separator=''
-ff_right_separator_black=''
+ff_left_separator=''
+ff_left_separator_black=''
+ff_right_separator=''
+ff_right_separator_black=''
+
+# ff_left_separator=''
+# ff_left_separator_black=''
+# ff_right_separator=''
+# ff_right_separator_black=''
+
 ff_session_symbol=''
 
 clock() {
