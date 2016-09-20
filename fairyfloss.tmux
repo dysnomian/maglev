@@ -2,10 +2,10 @@
 set -e
 
 # Battery icons
-tmux set -g @batt_charged_icon ""
-tmux set -g @batt_charging_icon "︎"
-tmux set -g @batt_discharging_icon "︎♡"
-tmux set -g @batt_attached_icon "︎♡"
+# tmux set -g @batt_charged_icon ""
+# tmux set -g @batt_charging_icon "︎"     # nerdfonts f1e6
+# tmux set -g @batt_discharging_icon "︎♡"
+# tmux set -g @batt_attached_icon "︎♡"
 
 # Colors
 ff_lilac="#c5a3ff"
@@ -22,24 +22,24 @@ ff_left_separator=''
 ff_left_separator_black=''
 ff_right_separator=''
 ff_right_separator_black=''
+ff_session_symbol='❐'
+ff_slack_symbol=''           # nerdfonts f198
 
-# ff_left_separator=''
-# ff_left_separator_black=''
-# ff_right_separator=''
-# ff_right_separator_black=''
-
-ff_session_symbol=''
 
 clock() {
     tmux setw -g clock-mode-colour $ff_goldenrod
 }
 
 apply_theme() {
-    left_separator=''
-    left_separator_black=''
-    right_separator=''
-    right_separator_black=''
-    session_symbol=''
+    left_separator=''
+    left_separator_black=''
+    right_separator=''
+    right_separator_black=''
+
+    # left_separator=''
+    # left_separator_black=''
+    # right_separator=''
+    # right_separator_black=''
 
     # panes
     pane_border_fg="#c5a3ff"        # lilac
