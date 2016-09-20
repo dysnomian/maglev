@@ -120,8 +120,10 @@ apply_theme() {
     host_bg="#f8f8f0"           # silver
 
     status_clock="#[fg=$time_date_fg,nobold]$right_separator %R"
+    status_slack="#[fg=$time_date_fg,nobold]$right_separator $ff_slack_symbol"
+    status_vpn="#[fg=$time_date_fg,nobold]$right_separator $ff_vpn_symbol"
 
-    status_right="︎$status_clock $right_separator %a %b %d #[fg=$host_bg]$right_separator_black#[fg=$host_fg,bg=$host_bg,bold] #{battery_icon} #{battery_percentage} $right_separator #{cpu_percentage} "
+    status_right="︎$status_slack $status_vpn $status_clock $right_separator %a %b %d #[fg=$host_bg]$right_separator_black#[fg=$host_fg,bg=$host_bg,bold] #{battery_icon} #{battery_percentage} $right_separator #{cpu_percentage} "
     tmux set -g status-right-length 64 \; set -g status-right "$status_right"
 
     clock
