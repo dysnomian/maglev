@@ -1,0 +1,2 @@
+module BatteryStatus
+end

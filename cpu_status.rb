@@ -1,0 +1,2 @@
+module CpuStatus
+end
