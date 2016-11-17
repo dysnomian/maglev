@@ -1,5 +1,3 @@
-require "#{FF_DIR}/tmux_options.rb"
-
 module SpotifyStatus
   extend self
 
@@ -12,20 +10,21 @@ module SpotifyStatus
   STATUS_SCRIPT_PATH = ENV["TMUX_PLUGIN_MANAGER_PATH"] +
     "tmux-spotify/scripts/spotify_status.sh"
 
+  #TODO: Truncate track and artist names
   def status_string
-    refresh_status
-    "#{Icons[:spotify_icon]} #{status} #{artist}: #{track}"
+    "#{Icons[:spotify_icon]} #{status} #{artist}: #{track}" unless stopped?
   end
 
   def refresh_status
-    @status = TmuxOptions.run_script("tmux-spotify", "spotify_status.sh").strip
     @artist = TmuxOptions.run_script("tmux-spotify", "spotify_artist.sh").strip
     @track  = TmuxOptions.run_script("tmux-spotify", "spotify_track.sh").strip
     @last_updated = Time.now
+    @status = TmuxOptions.run_script("tmux-spotify", "spotify_status.sh").strip
   end
 
   def stopped?
-    status == Icons[:spotify_stopped_icon]
+    refresh_status
+    status.nil? || status == Icons[:spotify_stopped_icon]
   end
 end
 

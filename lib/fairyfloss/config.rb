@@ -1,5 +1,3 @@
-require "#{FF_DIR}/helpers.rb"
-
 #TODO bootstrapping script?
 class Config
   include Helpers

@@ -5,7 +5,7 @@ module FairyflossTheme
     end
 
     def add_segment(content:, bg:, fg:)
-      return self if content == nil
+      return self if content.nil? || content == ""
 
       last_segment = segments.last || nil_segment.new
       new_segment = FairyflossTheme::RightSegment.new(
@@ -14,6 +14,7 @@ module FairyflossTheme
         bg: bg,
         old_fg: last_segment.fg,
         old_bg: last_segment.bg)
+      puts new_segment.inspect
 
       segments << new_segment
       self

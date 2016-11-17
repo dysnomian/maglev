@@ -12,8 +12,24 @@ module Colors
 
   def colors
     @colors ||= base_colors.merge({
-      status_fg: base_colors[:lilac],
+      status_fg: base_colors[:silver],
       status_bg: base_colors[:bg_purple],
+      session_fg: base_colors[:bg_purple],
+      session_bg: base_colors[:seafoam],
+      message_fg: base_colors[:bg_purple],
+      message_bg: base_colors[:goldenrod],
+      mode_fg: base_colors[:bg_purple],
+      mode_bg: base_colors[:goldenrod],
+      display_panes_active: base_colors[:seafoam],
+      display_panes: base_colors[:seafoam],
+      window_status_fg: base_colors[:silver],
+      window_status_bg: base_colors[:bg_purple],
+      window_current_fg: base_colors[:silver],
+      window_current_bg: base_colors[:peach],
+      window_status_bell_fg: base_colors[:goldenrod],
+      window_status_bell_bg: "default",
+      window_status_last_fg: base_colors[:silver],
+      window_status_last_bg: "default",
       slack_bg: base_colors[:magenta],
       slack_fg: base_colors[:silver],
       time_date_fg: base_colors[:silver],
@@ -34,15 +50,15 @@ module Colors
 
   def base_colors
     {
-      lilac: "#c5a3ff",
-      seafoam: "#c2ffdf",
       bg_purple: "#5a5475",
       goldenrod: "#fffea0",
       lavender: "#8076aa",
-      magenta: "#f92672",
-      silver: "#f8f8f0",
-      peach: "#ff857f",
+      lilac: "#c5a3ff",
       pink: "#ffb8d1",
+      peach: "#ff857f",
+      magenta: "#f92672",
+      seafoam: "#c2ffdf",
+      silver: "#f8f8f0",
     }
   end
 end

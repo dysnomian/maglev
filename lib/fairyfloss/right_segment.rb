@@ -15,11 +15,11 @@ module FairyflossTheme
       when bg == old_bg
         Icons[:right_separator] + content
       when old_bg.nil?
-        "#[fg=#{bg}]" +
+        "#[fg=#{fg}]" +
           Icons[:right_separator] +
           "#[fg=#{fg},bg=#{bg},bold]#{content} "
       else
-        "#[fg=#{old_bg}]" +
+        "#[fg=#{bg},bg=#{old_bg}]" +
           Icons[:right_separator_black] +
           "#[fg=#{fg},bg=#{bg},bold]#{content} "
       end

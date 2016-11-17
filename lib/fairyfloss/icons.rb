@@ -23,7 +23,7 @@ module Icons
       spotify_icon: "♫",
       spotify_playing_icon: "",
       spotify_paused_icon: "",
-      spotify_stopped_icon: "",
+      spotify_stopped_icon: "■",
     }.merge(separators)
   end
 
